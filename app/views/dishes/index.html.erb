@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Exotica</h1>
+<!--Accordion wrapper-->
+<div class="accordion md-accordion accordion-1" id="accordionEx23" role="tablist">
+    <% @menu.each do |course_id, dishes| %>
+        <%#= link_to course_dishes_dishes_path(course_id: course.id) do %>
+          <%#= course.name %> <%#= image_tag("#{course.name.parameterize}.jpg") %>
+        <%# end %>
+        <% course = get_course(course_id) %>
+      <div class="card">
+        <div class="card-header green lighten-3 z-depth-1" role="tab" id="course<%= course_id%>">
+            <h5 class="text-uppercase mb-0 py-1">
+                <a class="white-text font-weight-bold" data-toggle="collapse" href="#collapse<%= course_id%>" aria-expanded="false" aria-controls="collapse<%= course_id%>">
+                  <%= course.name%>
+                </a>
+            </h5>
+        </div>
+        <div id="collapse<%= course_id%>" class="collapse" role="tabpanel" aria-labelledby="course<%= course_id%>" data-parent="#accordionEx23">
+            <div class="card-body">
+                <div class="row my-4">
+                    <div class="col-md-8">
+                        <!-- <h2 class="font-weight-bold mb-3 black-text">Hi! I am the first one.</h2> -->
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Discription</th>
+                              <th>Price</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% dishes.each do |dish| %>
+                              <tr>
+                                <td><%= dish.name%></td>
+                                <td><%= dish.description%></td>
+                                <td>&#x20b9;<%= dish.price%></td>
+                              </tr>
+                            <% end %>
+                            
+                          </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-4 mt-3 pt-2">
+                        <div class="view z-depth-1">
+                          <%= image_tag("#{course.name.parameterize}.jpg", alt: "#{course.name}", class: "img-fluid") %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    <% end %>
+</div>
+

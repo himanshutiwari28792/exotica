@@ -1,0 +1,35 @@
+<h1><%= @course.name %></h1>
+<%= link_to course_dishes_dishes_path(course_id: @course.id) do %>
+  <%= @course.name %> <%= image_tag("#{@course.name.parameterize}.jpg") %>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <th> Name </th>
+        <th> Description </th>
+        <th> Price </th>
+      </tr>
+      <%#= image_tag "snacks.jpg"%>
+      <%#= link_to "hiii #{image_tag('snacks.jpg')}", course_dishes_dishes_path %>
+
+    <% @dishes.each do |dish| %>
+      <tr>
+        <td> <%= dish.name %></td>
+        <td> <%= dish.description %></td>
+        <td> <%= dish.price.to_f %></td>
+        <!-- <td><%#= link_to "#{course.name}", dishes_path%></td>
+        <td><%#= link_to 'Show', course %></td>
+        <td><%#= link_to 'Edit', edit_dish_path(dish) %></td>
+        <td><%#= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Dish', new_dish_path(course_id: @course.id) %>
