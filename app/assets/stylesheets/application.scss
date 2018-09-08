@@ -19,8 +19,8 @@ h1, h2, h5 {
 }
 
 body {
-   background-image: url("background_image1.jpg");
-   color: #565653;
+    background: asset_url('background_image1.jpg');
+    color: #565653;
 }
 
 a, a:visited {
