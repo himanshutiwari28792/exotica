@@ -1,21 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Exotica</h1>
 <!--Accordion wrapper-->
 <div class="accordion md-accordion accordion-1" id="accordionEx23" role="tablist">
+  <h1 class="text-white font-weight-bold">Exotica</h1>
     <% @menu.each do |course_id, dishes| %>
-        <%#= link_to course_dishes_dishes_path(course_id: course.id) do %>
-          <%#= course.name %> <%#= image_tag("#{course.name.parameterize}.jpg") %>
-        <%# end %>
         <% course = get_course(course_id) %>
       <div class="card">
-        <div class="card-header green lighten-3 z-depth-1" role="tab" id="course<%= course_id%>">
-            <h5 class="text-uppercase mb-0 py-1">
-                <a class="white-text font-weight-bold" data-toggle="collapse" href="#collapse<%= course_id%>" aria-expanded="false" aria-controls="collapse<%= course_id%>">
-                  <%= course.name%>
-                </a>
+        <a data-toggle="collapse" href="#collapse<%= course_id%>" aria-expanded="false" aria-controls="collapse<%= course_id%>">
+          <div class="card-header accordian-collapse lighten-3 z-depth-1" role="tab" id="course<%= course_id%>">
+            <h5 class=" text-white font-weight-bold text-uppercase mb-0 py-1">
+              <%= course.name%>
             </h5>
-        </div>
+          </div>
+        </a>
         <div id="collapse<%= course_id%>" class="collapse" role="tabpanel" aria-labelledby="course<%= course_id%>" data-parent="#accordionEx23">
             <div class="card-body">
                 <div class="row my-4">
@@ -32,7 +29,7 @@
                           <tbody>
                             <% dishes.each do |dish| %>
                               <tr>
-                                <td><%= dish.name%></td>
+                                <td><%= link_to dish.name, edit_dish_path(dish, course_id: course.id) %></td>
                                 <td><%= dish.description%></td>
                                 <td>&#x20b9;<%= dish.price%></td>
                               </tr>
@@ -47,6 +44,7 @@
                         </div>
                     </div>
                 </div>
+                <%= link_to 'New Dish', new_dish_path(course_id: course.id), class: "text-white btn btn-primary" %>
             </div>
         </div>
       </div>

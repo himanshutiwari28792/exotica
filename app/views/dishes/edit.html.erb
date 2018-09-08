@@ -1,6 +1,4 @@
-<h1>Editing Dish</h1>
+<h2 class="text-white font-weight-bold">Editing Dish</h2>
 
-<%= render 'form', dish: @dish %>
+<%= render 'form', {dish: @dish, course: @course, edit: true} %>
 
-<%= link_to 'Show', @dish %> |
-<%= link_to 'Back', dishes_path %>

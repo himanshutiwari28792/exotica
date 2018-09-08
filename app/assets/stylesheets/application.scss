@@ -13,3 +13,21 @@
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+h1, h2, h5 {
+  text-align: center;
+}
+
+body {
+   background-image: url("background.jpg");
+   color: #565653;
+}
+
+a, a:visited {
+    color: #565653;
+}
+
+.accordian-collapse {
+  background-color : #271716e0 !important;
+}
+

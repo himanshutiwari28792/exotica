@@ -1,21 +1,32 @@
 <%= form_with(model: dish, local: true) do |form| %>
   <% if dish.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(dish.errors.count, "error") %> prohibited this dish from being saved:</h2>
-
-      <ul>
+    <div id="error_explanation" class="alert alert-danger" role="alert">
       <% dish.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-  <%= form.hidden_field :course_id, value: course.id %>
-  Name : <%= form.text_field :name %>
-  Price : <%= form.text_field :price %>
-  Description : <%= form.text_area :description %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <form>
+    <%= form.hidden_field :course_id, value: course.id %>
+    <div class="font-weight-bold text-white form-group form-check">
+      <label for="InputName">Name</label>
+      <%= form.text_field :name, class: "form-control", id: "InputName" %>
+    </div>
+    <div class="font-weight-bold text-white form-group form-check">
+      <label for="InputPrice">Price</label>
+      <%= form.number_field :price, :step => "0.001", class: "form-control", id: "InputPrice" %>
+    </div>
+    <div class="font-weight-bold text-white form-group form-check">
+      <label for="InputDescription">Description</label>
+      <%= form.text_area :description, class: "form-control", id: "InputDescription" %>
+    </div>
+    <div class="form-group form-check">
+      <button type="submit" class="text-white btn btn-primary">Submit</button>
+      <%= link_to 'Back', dishes_path, class: "text-white btn btn-primary" %>
+      <% if params[:action] == 'edit' %>
+        <%= link_to 'Destroy', dish_path(dish), data: {:confirm => 'Are you sure?'}, :method => :delete, class: "text-white btn btn-primary" %>
+      <% end %>
+    </div>
+  </form>
 <% end %>
