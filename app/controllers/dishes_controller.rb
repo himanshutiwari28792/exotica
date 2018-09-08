@@ -21,7 +21,7 @@ class DishesController < ApplicationController
     @dish = Dish.new(dish_params)
     respond_to do |format|
       if @dish.save
-        format.html { redirect_to dishes_path, notice: 'Dish was successfully created.' }
+        format.html { redirect_to dishes_path }
       else
         format.html { render :new }
       end
@@ -31,7 +31,7 @@ class DishesController < ApplicationController
   def update
     respond_to do |format|
       if @dish.update(dish_params)
-        format.html { redirect_to dishes_path, notice: 'Dish was successfully updated.' }
+        format.html { redirect_to dishes_path }
       else
         format.html { render :edit }
       end
@@ -41,7 +41,7 @@ class DishesController < ApplicationController
   def destroy
     @dish.destroy
     respond_to do |format|
-      format.html { redirect_to dishes_url, notice: 'Dish was successfully destroyed.' }
+      format.html { redirect_to dishes_url }
     end
   end
 
