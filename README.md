@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+Exotica is a simple rails CRUD application with rails 5.2.1 and bootstrap 4, which is deployed on heroku.
 
 * Ruby version
-
-* System dependencies
-
-* Configuration
-
+  ruby-2.5.0
+  
+* Rails version
+  Rails 5.2.1
+  
 * Database creation
-
+  rails db:migrate
+  
 * Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+  rails db:seed
 
 * Deployment instructions
+  git push heroku master
 
-* ...
